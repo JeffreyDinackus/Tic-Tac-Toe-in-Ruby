@@ -131,7 +131,28 @@ puts "Match up the number with the spot you want to place your piece."
 
    end
 
-    return false
+   # this is my original attempt, after taking a break I found this is a better way of doing it.
+  #  (0..2).each do |numerator|
+  #     (0..2).each do |denom|
+
+  #         if @current[numerator][denom].is_a?(Numeric)
+
+  #           @current_winner = "DRAW"
+  #           return true
+  #         end
+  #     end
+  #  end
+
+
+  if @current.flatten.any? { |element| element.is_a?(Numeric) }
+
+  else
+    @current_winner = "DRAW"
+    return true
+   end
+
+
+   return false
   end
   def turn(num)
 
