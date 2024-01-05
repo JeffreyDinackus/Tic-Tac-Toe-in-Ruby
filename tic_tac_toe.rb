@@ -66,9 +66,9 @@ class Game
 
   def show_board
 puts "Match up the number with the spot you want to place your piece."
-      @@filled_board.each do |i|
-        p i
-      end
+      # @@filled_board.each do |i|
+      #   p i
+      # end
       puts "-----------Current Board-------------"
       @current.each do |i|
         p i
@@ -85,10 +85,10 @@ puts "Match up the number with the spot you want to place your piece."
       @@empty = [
 
 
-      [[],[],[]],
+      [[1],[2],[3]],
 
-        [[],[],[]],
-      [[],[],[]]]
+        [[4],[5],[6]],
+      [[7],[8],[9]]]
       @current = @@empty
       @current_piece = "O"
       @other_piece = "X"
@@ -144,7 +144,7 @@ puts "Match up the number with the spot you want to place your piece."
     # 1 2 3
     # 4 5 6
     # 7 8 9
-    if @current[denom][numerator] == [] then
+    if @current[denom][numerator] != "X" && @current[denom][numerator] != "O" then
       @current[denom][numerator] = @current_piece
       return true
     else
