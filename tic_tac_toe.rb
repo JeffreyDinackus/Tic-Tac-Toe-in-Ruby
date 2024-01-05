@@ -29,6 +29,9 @@ class Game
   end
 
   def run
+    puts "welcome to TIC TAC TOE."
+    puts "choose the corresponding spot number when it is your turn to place a piece. the current turn will be outputted."
+          puts "if the piece isn't being placed, it's probably already been taken."
 
     while !check() do
 
@@ -45,9 +48,14 @@ class Game
           puts "enter a number between 1 and 9"
         end
         if num >= 1 && num <= 9 then
-          x = false
-          turn(num)
-          break
+
+          y = turn(num)
+
+          if y == true then
+            x = false
+            break
+          end
+
         end
       end
       # current piece is not handed to turn, as it is availible already.
@@ -87,7 +95,12 @@ puts "Match up the number with the spot you want to place your piece."
     # 1 2 3
     # 4 5 6
     # 7 8 9
-    @current[denom][numerator] = @current_piece
+    if @current[denom][numerator] == [] then
+      @current[denom][numerator] = @current_piece
+      return true
+    else
+      return false
+    end
   end
 end
 
