@@ -44,9 +44,10 @@ class Game
         rescue
           puts "enter a number between 1 and 9"
         end
-        if num > 1 && num < 9 then
+        if num >= 1 && num <= 9 then
           x = false
           turn(num)
+          break
         end
       end
       # current piece is not handed to turn, as it is availible already.
@@ -60,7 +61,7 @@ class Game
 
   def show_board
 puts "Match up the number with the spot you want to place your piece."
-@@filled_board.each do |i|
+      @@filled_board.each do |i|
         p i
       end
       puts "-----------Current Board-------------"
@@ -76,9 +77,17 @@ puts "Match up the number with the spot you want to place your piece."
 
   end
   def turn(num)
-    p num
-    p @current_piece
 
+    p @current_piece
+    # this sets the line number in the array for current. it is required to make the correct spot findable in the current array.
+    denom = num > 6 ? 2 : ( num > 3 ? 1 : 0)
+    numerator = num % 3 == 0 ? 2 : (num == 2 || num == 5 || num == 8 ? 1 : 0)
+
+
+    # 1 2 3
+    # 4 5 6
+    # 7 8 9
+    @current[denom][numerator] = @current_piece
   end
 end
 
