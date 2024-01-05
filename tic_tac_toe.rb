@@ -59,7 +59,7 @@ class Game
 
 
     end
-
+    show_board()
     puts "#{@current_winner} WINS. GAME OVER." # may need to be swapped for the other piece.
 
   end
@@ -107,16 +107,29 @@ puts "Match up the number with the spot you want to place your piece."
         end
       end
     end
-
+  # checking vertical wins
    assertion.each do |a|
       (0..2).each do |denom|
 
-        if @current[denom][0] == a && @current[denom][1] == a && @current[denom][2] == a then
+        if @current[0][denom] == a && @current[1][denom] == a && @current[2][denom] == a then
           @current_winner = a
           return true
         end
       end
     end
+    # 1 2 3
+    # 4 5 6
+    # 7 8 9
+
+    # diagonal checking.
+
+   assertion.each do |a|
+    if @current[0][0] == a && @current[1][1] == a && @current[2][2] == a || @current[0][2] == a && @current[1][1] == a && @current[2][0] == a then
+      @current_winner = a
+      return true
+    end
+
+   end
 
     return false
   end
