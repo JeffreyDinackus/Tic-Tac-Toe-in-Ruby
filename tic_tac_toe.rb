@@ -143,7 +143,7 @@ puts "Match up the number with the spot you want to place your piece."
   #     end
   #  end
 
-
+   # this line checks if ANY element is a number, if it contains a number, nothing happens as there is space remaining on the board. This is to check if there is a draw.
   if @current.flatten.any? { |element| element.is_a?(Numeric) }
 
   else
